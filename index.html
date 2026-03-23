@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRATE — The Future of Gaming</title>
+
+  <!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  IMAGE FILES — create a folder called  images/  next to this    ║
+  ║  HTML file and drop your covers in with these exact filenames:  ║
+  ║                                                                  ║
+  ║  HERO:                                                           ║
+  ║    gta6.jpg                (wide landscape, any high-res)        ║
+  ║                                                                  ║
+  ║  FEATURED GRID:                                                  ║
+  ║    feat-gta6.jpg   elden-ring.jpg   zelda-echoes.jpg             ║
+  ║    mass-effect5.jpg   silent-hill.jpg                            ║
+  ║                                                                  ║
+  ║  FLASH DEALS:                                                    ║
+  ║    deal-rdr2.jpg   deal-spiderman2.jpg                           ║
+  ║    deal-bg3.jpg    deal-starfield.jpg                            ║
+  ║                                                                  ║
+  ║  NEW RELEASES (horizontal strip):                                ║
+  ║    rel-avowed.jpg          rel-yakuza.jpg                        ║
+  ║    rel-ac-shadows.jpg      rel-mh-wilds.jpg                      ║
+  ║    rel-silksong.jpg        rel-death-stranding2.jpg              ║
+  ║    rel-doom-darkages.jpg                                         ║
+  ║                                                                  ║
+  ║  LIBRARY (portrait covers, ideal 600×900 px):                   ║
+  ║    lib-cyberpunk2077.jpg   lib-god-of-war.jpg                    ║
+  ║    lib-the-witcher3.jpg    lib-ratchet-clank.jpg                 ║
+  ║    lib-horizon-fw.jpg      lib-returnal.jpg                      ║
+  ║    lib-demon-souls.jpg     lib-ff16.jpg                          ║
+  ║    lib-forza-horizon5.jpg  lib-halo-infinite.jpg                 ║
+  ║    lib-deathloop.jpg       lib-ghostwire.jpg                     ║
+  ║    lib-plague-tale.jpg     lib-stray.jpg                         ║
+  ║    lib-tlouu2.jpg          lib-alan-wake2.jpg                    ║
+  ║    lib-diablo4.jpg         lib-street-fighter6.jpg               ║
+  ║    lib-mortal-kombat1.jpg  lib-tekken8.jpg                       ║
+  ║    lib-fortnite.jpg        lib-apex-legends.jpg                  ║
+  ║    lib-overwatch2.jpg      lib-valorant.jpg                      ║
+  ║    lib-minecraft.jpg       lib-terraria.jpg                      ║
+  ║    lib-among-us.jpg        lib-fall-guys.jpg                     ║
+  ║    lib-sekiro.jpg          lib-nioh2.jpg                         ║
+  ║    lib-ghost-tsushima.jpg  lib-death-stranding2.jpg              ║
+  ╚══════════════════════════════════════════════════════════════════╝
+  -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ── CURSOR ─────────────────────────────────────────────────── -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ── CART TOAST ─────────────────────────────────────────────── -->
+  <div class="cart-notif" id="cartNotif">
+    <div class="cart-notif-check">✓</div>
+    <div>
+      <div class="cart-notif-text" id="cartNotifText">ADDED TO CART</div>
+      <div class="cart-notif-sub">PROCEED TO CHECKOUT</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       NAVIGATION
+       ══════════════════════════════════════════════════════════════ -->
+  <nav>
+    <div class="logo">KRATE</div>
+
+    <ul>
+      <li><a href="#">Store</a></li>
+      <li><a href="#library-section">Library</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Deals</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn-nav">Sign In</button>
+      <button class="btn-nav primary">Join Free</button>
+      <div class="cart-wrapper" id="cartBtn">
+        🛒
+        <div id="cartCount">0</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       HERO  —  GTA VI Featured
+       ══════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+
+    <!-- Parallax backgrounds -->
+    <div class="hero-bg parallax-bg" data-speed="0.3"></div>
+    <div class="parallax-layer pl-grid"  data-speed="0.1"></div>
+    <div class="parallax-layer pl-glow1" data-speed="0.2"></div>
+    <div class="parallax-layer pl-glow2" data-speed="0.15"></div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Right panel — GTA VI artwork  (images/gta6.jpg) -->
+    <div class="hero-visual">
+      <div class="gta-bg" id="gtaBg" data-speed="0.4"></div>
+      <div class="gta-overlay"></div>
+
+      <!-- Metacritic HUD -->
+      <div class="metacritic-badge">
+        <div class="mc-label">METACRITIC</div>
+        <div class="mc-score">97</div>
+        <div class="mc-stars">★★★★★</div>
+      </div>
+    </div>
+
+    <!-- Left panel — text content -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        NOW AVAILABLE — PRE-ORDER
+      </div>
+
+      <div class="hero-label">Featured Release</div>
+
+      <h1 class="hero-title">
+        <span class="line3">Grand Theft Auto</span>
+        <span class="line1">GTA</span>
+        <span class="line2">VI</span>
+      </h1>
+
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Release</span>
+          <span class="meta-value">2025</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Developer</span>
+          <span class="meta-value">Rockstar</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Genre</span>
+          <span class="meta-value">Open World</span>
+        </div>
+      </div>
+
+      <p class="hero-desc">
+        Return to Vice City. Experience the most ambitious open world ever created.
+        Two protagonists, endless freedom, and a story that will define a generation.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="addToCart('GTA VI')">⚡ PRE-ORDER NOW</button>
+        <button class="btn-secondary">▶ WATCH TRAILER</button>
+      </div>
+    </div>
+
+    <!-- Floating price tag -->
+    <div class="hero-price-tag">
+      <div class="price-label">Standard Edition</div>
+      <div class="price-val">$69.99</div>
+      <div class="price-platform">
+        <div class="platform-chip">PS5</div>
+        <div class="platform-chip">Xbox</div>
+        <div class="platform-chip">PC</div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </section><!-- /hero -->
+
+  <!-- ── NEWS TICKER ─────────────────────────────────────────────── -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker-item">
+        <span>GTA VI</span> NOW AVAILABLE <div class="ticker-sep">◆</div>
+        <span>CYBER PULSE 2</span> 40% OFF <div class="ticker-sep">◆</div>
+        <span>DRAGON AGE: VEILGUARD</span> NEW RELEASE <div class="ticker-sep">◆</div>
+        <span>KRATE REWARDS</span> EARN POINTS ON EVERY PURCHASE <div class="ticker-sep">◆</div>
+        <span>STELLAR BLADE 2</span> COMING SOON <div class="ticker-sep">◆</div>
+        <span>STEAM DECK OLED</span> OPTIMIZED TITLES AVAILABLE <div class="ticker-sep">◆</div>
+        <span>ROG ALLY X</span> EXCLUSIVE DEALS <div class="ticker-sep">◆</div>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="ticker-item">
+        <span>GTA VI</span> NOW AVAILABLE <div class="ticker-sep">◆</div>
+        <span>CYBER PULSE 2</span> 40% OFF <div class="ticker-sep">◆</div>
+        <span>DRAGON AGE: VEILGUARD</span> NEW RELEASE <div class="ticker-sep">◆</div>
+        <span>KRATE REWARDS</span> EARN POINTS ON EVERY PURCHASE <div class="ticker-sep">◆</div>
+        <span>STELLAR BLADE 2</span> COMING SOON <div class="ticker-sep">◆</div>
+        <span>STEAM DECK OLED</span> OPTIMIZED TITLES AVAILABLE <div class="ticker-sep">◆</div>
+        <span>ROG ALLY X</span> EXCLUSIVE DEALS <div class="ticker-sep">◆</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PLATFORM STRIP ──────────────────────────────────────────── -->
+  <div class="platforms-section">
+    <div class="platforms-label">// Available on all platforms</div>
+    <div class="platforms-row">
+      <div class="platform-item">
+        <div class="platform-icon">🖥️</div>
+        <div>
+          <div class="platform-name">PC</div>
+          <div class="platform-sub">Windows · Mac · Linux</div>
+        </div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon">🎮</div>
+        <div>
+          <div class="platform-name">PlayStation 5</div>
+          <div class="platform-sub">PS5 · PS5 Pro</div>
+        </div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon">🕹️</div>
+        <div>
+          <div class="platform-name">Xbox Series</div>
+          <div class="platform-sub">Series X · Series S</div>
+        </div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon">🟦</div>
+        <div>
+          <div class="platform-name">Steam Deck</div>
+          <div class="platform-sub">OLED · LCD</div>
+        </div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon">⚡</div>
+        <div>
+          <div class="platform-name">ROG Ally</div>
+          <div class="platform-sub">Ally · Ally X</div>
+        </div>
+      </div>
+      <div class="platform-item">
+        <div class="platform-icon">🔮</div>
+        <div>
+          <div class="platform-name">Legion Go</div>
+          <div class="platform-sub">Lenovo Handheld</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STATS BAR ───────────────────────────────────────────────── -->
+  <div class="stats-bar reveal">
+    <div class="stat-item">
+      <div class="stat-num" data-target="12847">0</div>
+      <div class="stat-label">Games Available</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="45">0</div>
+      <div class="stat-label">Million Players</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="6">0</div>
+      <div class="stat-label">Platforms Supported</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="99">0</div>
+      <div class="stat-label">% Uptime SLA</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FEATURED GAMES GRID
+       ══════════════════════════════════════════════════════════════ -->
+  <section class="games-section">
+    <div class="section-header reveal">
+      <div class="section-tag">// Top Charts</div>
+      <div class="section-title">Featured <span style="color:var(--neon-magenta)">Games</span></div>
+    </div>
+
+    <div class="games-grid reveal">
+
+      <!-- GTA VI  →  images/feat-gta6.jpg -->
+      <div class="game-card">
+        <div class="game-card-bg">
+          <img src="images/feat-gta6.jpg" alt="GTA VI" loading="lazy">
+        </div>
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center 30%,rgba(255,0,110,.25),transparent 60%);"></div>
+        <div class="card-gradient"></div>
+        <div class="card-info" style="padding:32px;">
+          <div class="card-genre">Open World · Action</div>
+          <div class="card-title card-title-lg">GRAND THEFT<br>AUTO VI</div>
+          <div class="card-rating">
+            <div class="stars">★★★★★</div>
+            <div class="rating-num">9.8 / 10</div>
+          </div>
+          <div class="card-price-row">
+            <div class="card-price">$69.99</div>
+            <div class="card-badge">Pre-Order</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add" onclick="addToCart('GTA VI')">Add to Cart</button>
+            <button class="btn-wishlist">♡ Wish</button>
+          </div>
+        </div>
+        <div class="featured-stamp">FEATURED</div>
+      </div>
+
+      <!-- Elden Ring  →  images/elden-ring.jpg -->
+      <div class="game-card">
+        <div class="game-card-bg"><img src="images/elden-ring.jpg" alt="Elden Ring Nightreign" loading="lazy"></div>
+        <div class="card-gradient"></div>
+        <div class="card-info">
+          <div class="card-genre">Action RPG</div>
+          <div class="card-title card-title-sm">ELDEN RING:<br>NIGHTREIGN</div>
+          <div class="card-price-row">
+            <div class="card-price">$49.99</div>
+            <div class="card-badge new">New</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add" onclick="addToCart('Elden Ring: Nightreign')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zelda  →  images/zelda-echoes.jpg -->
+      <div class="game-card">
+        <div class="game-card-bg"><img src="images/zelda-echoes.jpg" alt="Zelda Echoes" loading="lazy"></div>
+        <div class="card-gradient"></div>
+        <div class="card-info">
+          <div class="card-genre">Adventure · Open World</div>
+          <div class="card-title card-title-sm">THE LEGEND OF<br>ZELDA: ECHOES</div>
+          <div class="card-price-row">
+            <div class="card-price">$59.99</div>
+            <div class="card-badge hot">Hot</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add" onclick="addToCart('Zelda: Echoes')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mass Effect  →  images/mass-effect5.jpg -->
+      <div class="game-card">
+        <div class="game-card-bg"><img src="images/mass-effect5.jpg" alt="Mass Effect 5" loading="lazy"></div>
+        <div class="card-gradient"></div>
+        <div class="card-info">
+          <div class="card-genre">Sci-Fi · RPG</div>
+          <div class="card-title card-title-sm">MASS EFFECT 5:<br>GENESIS</div>
+          <div class="card-price-row">
+            <div class="card-price">$64.99</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add" onclick="addToCart('Mass Effect 5')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Silent Hill  →  images/silent-hill.jpg -->
+      <div class="game-card">
+        <div class="game-card-bg"><img src="images/silent-hill.jpg" alt="Silent Hill f" loading="lazy"></div>
+        <div class="card-gradient"></div>
+        <div class="card-info">
+          <div class="card-genre">Horror · Survival</div>
+          <div class="card-title card-title-sm">SILENT HILL: f<br>REMAKE</div>
+          <div class="card-price-row">
+            <div class="card-price">$44.99</div>
+            <div class="card-badge hot">Hot</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add" onclick="addToCart('Silent Hill f')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /games-grid -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FLASH DEALS
+       ══════════════════════════════════════════════════════════════ -->
+  <section class="deals-section">
+    <div class="section-header reveal">
+      <div class="section-tag">// Limited Time</div>
+      <div class="section-title">Flash <span style="color:var(--neon-green)">Deals</span></div>
+      <div style="font-size:13px;color:var(--text-dim);margin-top:8px;font-family:'Share Tech Mono',monospace;">
+        ⏱ Resets in: <span id="countdown" style="color:var(--neon-gold);">--:--:--</span>
+      </div>
+    </div>
+
+    <div class="deals-grid reveal">
+
+      <!-- images/deal-rdr2.jpg -->
+      <div class="deal-card">
+        <div class="deal-cover">
+          <img src="images/deal-rdr2.jpg" alt="Red Dead Redemption 2" loading="lazy">
+          <div class="deal-cover-fallback" style="background:linear-gradient(135deg,#1a0a0a,#2a1010);"></div>
+        </div>
+        <div class="deal-body">
+          <div class="deal-name">Red Dead Redemption 2</div>
+          <div class="deal-prices">
+            <div class="deal-original">$59.99</div>
+            <div class="deal-sale">$23.99</div>
+            <div class="deal-pct">-60%</div>
+          </div>
+          <button class="btn-add" style="margin-top:12px;width:100%;" onclick="addToCart('RDR2')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- images/deal-spiderman2.jpg -->
+      <div class="deal-card">
+        <div class="deal-cover">
+          <img src="images/deal-spiderman2.jpg" alt="Spider-Man 2" loading="lazy">
+          <div class="deal-cover-fallback" style="background:linear-gradient(135deg,#0a0a2a,#1a1040);"></div>
+        </div>
+        <div class="deal-body">
+          <div class="deal-name">Marvel's Spider-Man 2</div>
+          <div class="deal-prices">
+            <div class="deal-original">$69.99</div>
+            <div class="deal-sale">$34.99</div>
+            <div class="deal-pct">-50%</div>
+          </div>
+          <button class="btn-add" style="margin-top:12px;width:100%;" onclick="addToCart('Spider-Man 2')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- images/deal-bg3.jpg -->
+      <div class="deal-card">
+        <div class="deal-cover">
+          <img src="images/deal-bg3.jpg" alt="Baldur's Gate 3" loading="lazy">
+          <div class="deal-cover-fallback" style="background:linear-gradient(135deg,#001a10,#002010);"></div>
+        </div>
+        <div class="deal-body">
+          <div class="deal-name">Baldur's Gate 3</div>
+          <div class="deal-prices">
+            <div class="deal-original">$59.99</div>
+            <div class="deal-sale">$35.99</div>
+            <div class="deal-pct">-40%</div>
+          </div>
+          <button class="btn-add" style="margin-top:12px;width:100%;" onclick="addToCart('BG3')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- images/deal-starfield.jpg -->
+      <div class="deal-card">
+        <div class="deal-cover">
+          <img src="images/deal-starfield.jpg" alt="Starfield Enhanced" loading="lazy">
+          <div class="deal-cover-fallback" style="background:linear-gradient(135deg,#1a1a00,#2a2000);"></div>
+        </div>
+        <div class="deal-body">
+          <div class="deal-name">Starfield Enhanced</div>
+          <div class="deal-prices">
+            <div class="deal-original">$69.99</div>
+            <div class="deal-sale">$27.99</div>
+            <div class="deal-pct">-60%</div>
+          </div>
+          <button class="btn-add" style="margin-top:12px;width:100%;" onclick="addToCart('Starfield')">Add to Cart</button>
+        </div>
+      </div>
+
+    </div><!-- /deals-grid -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       NEW RELEASES
+       ══════════════════════════════════════════════════════════════ -->
+  <section class="releases-section">
+    <div class="section-header reveal">
+      <div class="section-tag">// Just Dropped</div>
+      <div class="section-title">New <span style="color:var(--neon-cyan)">Releases</span></div>
+    </div>
+
+    <div class="new-releases reveal">
+
+      <div class="release-card">
+        <div class="release-cover">
+          <img src="images/rel-avowed.jpg" alt="Avowed" loading="lazy">
+          <div class="release-cover-fallback" style="background:linear-gradient(135deg,#150a20,#0a1525);"></div>
+        </div>
+        <div class="release-info">
+          <div class="release-name">Avowed</div>
+          <div class="release-price">$59.99</div>
+        </div>
+      </div>
+
+      <div class="release-card">
+        <div class="release-cover">
+          <img src="images/rel-yakuza.jpg" alt="Like a Dragon Pirate Yakuza" loading="lazy">
+          <div class="release-cover-fallback" style="background:linear-gradient(135deg,#200808,#100a0a);"></div>
+        </div>
+        <div class="release-info">
+          <div class="release-name">Like a Dragon: Pirate Yakuza</div>
+          <div class="release-price">$54.99</div>
+        </div>
+      </div>
+
+      <div class="release-card">
+        <div class="release-cover">
+          <img src="images/rel-ac-shadows.jpg" alt="AC Shadows" loading="lazy">
+          <div class="release-cover-fallback" style="background:linear-gradient(135deg,#0a0808,#181008);"></div>
+        </div>
+        <div class="release-info">
+          <div class="release-name">Assassin's Creed Shadows</div>
+          <div class="release-price">$69.99</div>
+        </div>
+      </div>
+
+      <div class="release-card">
+        <div class="release-cover">
+          <img src="images/rel-mh-wilds.jpg" alt="Monster Hunter Wilds" loading="lazy">
+          <div class="release-cover-fallback" style="background:linear-gradient(135deg,#0a1208,#121808);"></div>
+        </div>
+        <div class="release-info">
+          <div class="release-name">Monster Hunter Wilds</div>
+          <div class="release-price">$64.99</div>
+        </div>
+      </div>
+
+      <div class="release-card">
+        <div class="release-cover">
+          <img src="images/rel-silksong.jpg" alt="Silksong" loading="lazy">
+          <div class="release-cover-fallback" style="background:linear-gradient(135deg,#080820,#100828);"></div>
+        </div>
+        <div class="release-info">
+          <div class="release-name">Hollow Knight: Silksong</div>
+          <div class="release-price">$39.99</div>
+        </div>
+      </div>
+
+      <div class="release-card">
+        <div class="release-cover">
+          <img src="images/rel-death-stranding2.jpg" alt="Death Stranding 2" loading="lazy">
+          <div class="release-cover-fallback" style="background:linear-gradient(135deg,#080818,#100820);"></div>
+        </div>
+        <div class="release-info">
+          <div class="release-name">Death Stranding 2</div>
+          <div class="release-price">$69.99</div>
+        </div>
+      </div>
+
+      <div class="release-card">
+        <div class="release-cover">
+          <img src="images/rel-doom-darkages.jpg" alt="Doom Dark Ages" loading="lazy">
+          <div class="release-cover-fallback" style="background:linear-gradient(135deg,#200808,#2a0808);"></div>
+        </div>
+        <div class="release-info">
+          <div class="release-name">Doom: The Dark Ages</div>
+          <div class="release-price">$59.99</div>
+        </div>
+      </div>
+
+    </div><!-- /new-releases -->
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       GAME LIBRARY  (Infinite Scroll)
+       ══════════════════════════════════════════════════════════════ -->
+  <section class="library-section" id="library-section">
+    <div class="section-header reveal">
+      <div class="section-tag">// 12,000+ Titles</div>
+      <div class="section-title">Game <span style="color:var(--neon-cyan)">Library</span></div>
+      <p style="color:var(--text-dim);font-size:14px;margin-top:10px;">
+        Browse every genre across every platform. Scroll to discover more.
+      </p>
+    </div>
+
+    <!-- Genre filter controls -->
+    <div class="lib-controls reveal">
+      <button class="lib-filter active" data-genre="all">All Genres</button>
+      <button class="lib-filter" data-genre="action">Action</button>
+      <button class="lib-filter" data-genre="rpg">RPG</button>
+      <button class="lib-filter" data-genre="shooter">Shooter</button>
+      <button class="lib-filter" data-genre="sports">Sports</button>
+      <button class="lib-filter" data-genre="indie">Indie</button>
+      <button class="lib-filter" data-genre="horror">Horror</button>
+      <button class="lib-filter" data-genre="strategy">Strategy</button>
+      <select class="lib-sort">
+        <option>Sort: Best Sellers</option>
+        <option>Sort: Newest First</option>
+        <option>Sort: Price: Low–High</option>
+        <option>Sort: Metacritic</option>
+      </select>
+    </div>
+
+    <!-- Cards injected here by main.js -->
+    <div class="lib-grid" id="libGrid"></div>
+
+    <!-- Infinite scroll trigger + states -->
+    <div class="lib-loader" id="libLoader">
+      <div class="lib-loader-ring"></div>
+      <div class="lib-loader-text">LOADING MORE GAMES...</div>
+    </div>
+    <div class="lib-end-msg" id="libEnd">
+      — END OF LIBRARY — <span style="color:var(--neon-cyan);">12,847 titles</span> —
+    </div>
+    <div id="lib-sentinel"></div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <div class="logo">KRATE</div>
+        <p class="footer-desc">
+          The next generation gaming platform. Discover, buy, and play games
+          across every platform with the fastest download speeds on earth.
+        </p>
+        <div class="footer-socials">
+          <div class="social-btn">𝕏</div>
+          <div class="social-btn">📘</div>
+          <div class="social-btn">📷</div>
+          <div class="social-btn">💬</div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Store</h4>
+        <a href="#">Browse All Games</a>
+        <a href="#">New Releases</a>
+        <a href="#">Top Sellers</a>
+        <a href="#">Free to Play</a>
+        <a href="#">DLC &amp; Addons</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Platforms</h4>
+        <a href="#">PC Games</a>
+        <a href="#">PlayStation 5</a>
+        <a href="#">Xbox Series X</a>
+        <a href="#">Steam Deck</a>
+        <a href="#">ROG Ally</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+    </div><!-- /footer-top -->
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 KRATE GAMING INC. ALL RIGHTS RESERVED.</div>
+      <div class="footer-status">
+        SYSTEM STATUS: <span class="status-dot">ONLINE ●</span>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- ── Scripts (data before main) ─────────────────────────────── -->
+  <script src="data/games.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
